@@ -1,2 +1,4 @@
 <script setup></script>
-<template>TheTicTacToeBoard</template>
+<template>
+  <div>TheTicTacToeBoard</div>
+</template>
