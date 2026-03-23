@@ -1,5 +1,5 @@
 <script setup>
-import TicTacToeSquare from "./TicTacToeSquare.vue";
+import TicTacToeSquare from "@/components/TicTacToeSquare.vue";
 import { useBoardMatrix } from "@/composables/useBoardMatrix";
 
 const { boardMatrix, winnerCharValue, handleMatrixChange, handleResetGame } =

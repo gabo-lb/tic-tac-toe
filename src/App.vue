@@ -1,5 +1,5 @@
 <script setup>
-import TheTicTacToeGame from "./views/TheTicTacToeGame.vue";
+import TheTicTacToeGame from "@/views/TheTicTacToeGame.vue";
 </script>
 
 <template>

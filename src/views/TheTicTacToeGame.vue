@@ -1,5 +1,5 @@
 <script setup>
-import TheTicTacToeBoard from "../components/TheTicTacToeBoard.vue";
+import TheTicTacToeBoard from "@/components/TheTicTacToeBoard.vue";
 </script>
 
 <template>
