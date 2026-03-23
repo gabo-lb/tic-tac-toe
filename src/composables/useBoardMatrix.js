@@ -1,18 +1,29 @@
 import { ref } from "vue";
 
-const cleanBoardMatrix = () => [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
+/**
+ *
+ * @returns
+ */
+export const useBoardMatrix = () => ({
+  boardMatrix,
+  winnerCharValue,
+  handleMatrixChange,
+  handleResetGame,
+});
+
+const getCleanBoardMatrix = () => [
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
 ];
 
-const boardMatrix = ref(cleanBoardMatrix());
+const boardMatrix = ref(getCleanBoardMatrix());
 
 const winnerCharValue = ref(false);
 
 const checkForHorizontalCombination = () => {
   let hasHorizontalWinnerChar = "";
-  boardMatrix.value.forEach((row, rowIndex) => {
+  boardMatrix.value.forEach((row) => {
     const [rowFirstValue, rowSecondValue, rowThirdValue] = row;
     if (!rowFirstValue && !rowSecondValue && !rowThirdValue) return "";
     const hasHorizontalWinner =
@@ -48,6 +59,7 @@ const checkForVerticalCombination = () => {
   }
   return hasVerticalWinnerChar;
 };
+
 const checkForDiagonalCombination = () => {
   const boardMiddleRow = boardMatrix.value.at(1);
   const centerValue = boardMiddleRow.at(1);
@@ -109,17 +121,6 @@ const handleMatrixChange = ({ columnIndex, rowIndex, squareValue }) => {
 };
 
 const handleResetGame = () => {
-  boardMatrix.value = cleanBoardMatrix();
+  boardMatrix.value = getCleanBoardMatrix();
   winnerCharValue.value = false;
 };
-
-/**
- *
- * @returns
- */
-export const useBoardMatrix = () => ({
-  boardMatrix,
-  winnerCharValue,
-  handleMatrixChange,
-  handleResetGame,
-});
