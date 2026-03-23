@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from "vue";
 import TicTacToeSquare from "./TicTacToeSquare.vue";
 import { useBoardMatrix } from "@/composables/useBoardMatrix";
 
 const { boardMatrix, winnerCharValue, handleMatrixChange, handleResetGame } =
   useBoardMatrix();
 </script>
+
 <template>
   <div class="w-96 h-96 outline-1">
     <div

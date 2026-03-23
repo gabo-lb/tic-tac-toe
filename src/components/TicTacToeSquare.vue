@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watchEffect } from "vue";
+import { ref, watchEffect } from "vue";
 
 const {
   isThereAWinner,

@@ -1,13 +1,9 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
+import TheTicTacToeGame from "./views/TheTicTacToeGame.vue";
 </script>
 
 <template>
-  <header>
-    <nav class="flex justify-center pb-2">
-      <RouterLink to="/" class="text-2xl text-slate-800">Home</RouterLink>
-    </nav>
-  </header>
-
-  <RouterView />
+  <div class="flex justify-center pb-2">
+    <TheTicTacToeGame />
+  </div>
 </template>
