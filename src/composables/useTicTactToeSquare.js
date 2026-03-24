@@ -3,6 +3,7 @@ import {
   getIsValidInput,
   getNormalizedValue,
 } from "@/components/TicTacToeSquare/ticTacToeSquareFunctions";
+import { useBoardMatrix } from "@/composables/useBoardMatrix";
 
 export const useTicTacToeSquare = ({
   squareValue,
@@ -12,6 +13,8 @@ export const useTicTacToeSquare = ({
 }) => {
   const squareInput = ref("");
 
+  const { handleErrorMessage, lastCharPlayed } = useBoardMatrix();
+
   /**
    * Method to handle board square change
    * @param event - Event triggered by square input change
@@ -19,7 +22,14 @@ export const useTicTacToeSquare = ({
   const handleSquareInputChange = (event) => {
     let typedValue = event.target.value;
 
-    const isValidInput = getIsValidInput(typedValue);
+    const normalizedValue = getNormalizedValue(typedValue);
+
+    const { isValidInput, errorMsg } = getIsValidInput({
+      typedValue: normalizedValue,
+      lastCharPlayed: lastCharPlayed.value,
+    });
+
+    handleErrorMessage(errorMsg);
 
     if (!isValidInput) {
       //Block enter any other value that is not allowed
@@ -27,15 +37,15 @@ export const useTicTacToeSquare = ({
       return;
     }
 
-    typedValue = getNormalizedValue(typedValue);
-
-    squareInput.value = typedValue;
+    squareInput.value = normalizedValue;
 
     handleMatrixChange({
       columnIndex,
       rowIndex,
-      squareValue: typedValue,
+      squareValue: normalizedValue,
     });
+
+    lastCharPlayed.value = normalizedValue;
   };
 
   /**

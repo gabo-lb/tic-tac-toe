@@ -2,11 +2,25 @@ import { allowedValues } from "@/components/TicTacToeSquare/constants";
 
 /**
  * Method to get if the square input is valid
- * @param value - value typed by user
+ * @param typedValue - value typed by user
+ * @param lastCharPlayed - value from the last movement
  */
-export const getIsValidInput = (value) => {
-  const isValidInput = allowedValues.includes(value);
-  return isValidInput;
+export const getIsValidInput = ({ typedValue, lastCharPlayed }) => {
+  let errorMsg = "";
+  const isTheSameAsLastPlayed = typedValue === lastCharPlayed;
+
+  const isValidInput =
+    allowedValues.includes(typedValue) && !isTheSameAsLastPlayed;
+
+  if (!isValidInput) {
+    errorMsg = "Is not a valid char to play";
+  }
+
+  if (isTheSameAsLastPlayed) {
+    errorMsg = "Is turn to the other player to make a move!";
+  }
+
+  return { isValidInput, errorMsg };
 };
 
 /**
