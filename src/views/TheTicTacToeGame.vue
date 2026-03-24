@@ -1,10 +1,15 @@
 <script setup>
+import TheResetGameButton from "@/components/TheResetGameButton.vue";
 import TheTicTacToeBoard from "@/components/TheTicTacToeBoard.vue";
+import TheTicTacToeGameTitle from "@/components/TheTicTacToeGameTitle.vue";
+import TheWinnerMessage from "@/components/TheWinnerMessage.vue";
 </script>
 
 <template>
   <div class="flex flex-col items-center justify-center">
-    <div class="text-2xl text-slate-700 p-4">The tic tac toe GAME</div>
+    <TheTicTacToeGameTitle />
     <TheTicTacToeBoard />
+    <TheWinnerMessage />
+    <TheResetGameButton />
   </div>
 </template>
